@@ -1,9 +1,18 @@
-# Fabric Example Mod
+# Dead Stars
 
-## Setup
+This mod was made in two months for Mod Garden: Nature (https://modgarden.net/events/mod-garden/nature)
 
-For setup instructions please see the [fabric documentation page](https://docs.fabricmc.net/develop/getting-started/setting-up-a-development-environment) that relates to the IDE that you are using.
+This mod was made for Fabric. If it works on Connector, great. I will not port the mod to any platform, and will not support issues on other platforms.
 
-## License
+More information later.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+# License
+
+- This mod can be freely shared and distributed in modpacks. Derivative works are governed by the licenses below:
+
+- Code is MIT
+
+- Music is All Rights Reserved
+
+- Block models, textures, and other non-music assets are CC-BY-NC-SA
+

@@ -1,31 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "dead_stars",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Dead Stars",
+	"description": "Travel to Sedna - a cold, airless desert planet, and rescue it from ecological disaster.",
 	"authors": [
-		"Me!"
+		"Falkreon",
+		"Notawallplan"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/falkreon/dead_stars",
+		"sources": "https://github.com/falkreon/dead_stars"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/dead_stars/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"blue.endless.deadstars.DeadStarsMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"blue.endless.deadstars.client.DeadStarsClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"deadstars.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "deadstars.client.mixins.json",
 			"environment": "client"
 		}
 	],

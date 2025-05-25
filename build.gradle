@@ -19,12 +19,10 @@ repositories {
 }
 
 loom {
-	splitEnvironmentSourceSets()
 
 	mods {
-		"modid" {
+		"dead_stars" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 
