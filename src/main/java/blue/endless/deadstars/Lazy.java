@@ -11,16 +11,19 @@ public class Lazy<T> implements Supplier<T> {
 	}
 	
 	public static <T> Lazy<T> create(Supplier<T> supplier) {
-		if (supplier instanceof Lazy<T> lazy)
+		if (supplier instanceof Lazy<T> lazy) {
 			return lazy;
+		}
+		
 		return new Lazy<>(supplier);
 	}
 	
 	@Override
 	public T get() {
-		if (t != null)
-			return t;
-		t = supplier.get();
+		if (t == null) {
+			t = supplier.get();
+		}
+		
 		return t;
 	}
 }
