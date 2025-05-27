@@ -1,24 +1,32 @@
 package blue.endless.deadstars;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DeadStarsMod implements ModInitializer {
-	public static final String MOD_ID = "modid";
+import blue.endless.deadstars.world.CityStructure;
+import blue.endless.deadstars.world.CityTileType;
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+public class DeadStarsMod implements ModInitializer {
+	private static final String MOD_ID = "dead_stars";
+	
+	public static final Logger LOGGER = LoggerFactory.getLogger("Dead Stars");
+	
+	public static final RegistryKey<Registry<CityTileType>> CITY_TILE_TYPE = RegistryKey.ofRegistry(identifier("city_tile_type"));
+	public static final RegistryKey<Registry<CityStructure>> CITY_STRUCTURE = RegistryKey.ofRegistry(identifier("city_structure"));
+	
+	public static Identifier identifier(String path) {
+		return Identifier.of(MOD_ID, path);
+	}
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-
-		LOGGER.info("Hello Fabric world!");
+		//ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(DataLoader.instance());
+		DynamicRegistries.<CityTileType>register(RegistryKey.ofRegistry(identifier("city_tile")), null);
 	}
 }
