@@ -26,6 +26,8 @@ public class CityTileType {
 	public int getMinHeight() {
 		CityStructure structure = bottomStructure.value();
 		
-		return structure.ySize();
+		// Temporarily disabled to get it compiling
+		//return structure.ySize();
+		return 0;
 	}
 }
