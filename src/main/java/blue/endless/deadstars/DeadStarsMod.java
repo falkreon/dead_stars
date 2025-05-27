@@ -3,7 +3,6 @@ package blue.endless.deadstars;
 import blue.endless.deadstars.block.DeadStarsBlocks;
 import blue.endless.deadstars.item.DeadStarsItems;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
@@ -28,8 +27,8 @@ public class DeadStarsMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		DeadStarsBlocks.init();
-		DeadStarsItems.init();
+		DeadStarsBlocks.register();
+		DeadStarsItems.register();
 		
 		//ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(DataLoader.instance());
 		// Dynamic registries can't be registered to this early
