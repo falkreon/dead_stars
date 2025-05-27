@@ -8,8 +8,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.LootableInventory;
 import net.minecraft.registry.RegistryWrapper.WrapperLookup;
 import net.minecraft.structure.StructureTemplate;
+import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.chunk.Chunk;
 
@@ -18,13 +18,24 @@ import net.minecraft.world.chunk.Chunk;
  * built from 1 to 3 of these parts.
  */
 public class CityStructure {
+	public static final CityStructure EMPTY = new CityStructure(List.of());
+	
 	private static final int NO_DRAW_OR_UPDATE = Block.FORCE_STATE_AND_SKIP_CALLBACKS_AND_DROPS | Block.SKIP_REDRAW_AND_BLOCK_ENTITY_REPLACED_CALLBACK;
 	
 	protected final List<StructureTemplate.StructureBlockInfo> blocks;
-	protected int xStart = 0;
-	protected int yStart = 0;
-	protected int zStart = 0;
-	protected Box bounds;
+	/**
+	 * This is the BlockBox containing all blocks in the structure. If the block list contains blocks outside this range,
+	 * they may not properly copy in when pasted in.
+	 */
+	protected BlockBox coverage;
+	
+	/**
+	 * This is the BlockBox used to position this CityStructure "flush" against other CityStructures. May be smaller
+	 * than the actual coverage box, to allow overhangs to protrude into adjacent structures.
+	 * TODO: Should this be part of the City Structure or the TileType?
+	 */
+	protected BlockBox collision;
+	
 	
 	public CityStructure(List<StructureTemplate.StructureBlockInfo> blocks) {
 		this.blocks = List.copyOf(blocks); // Ensure deep immutability

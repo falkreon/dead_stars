@@ -7,27 +7,27 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 
 import blue.endless.deadstars.DeadStarsMod;
-import net.minecraft.registry.RegistryEntryLookup.RegistryLookup;
 
 /**
  * A tile that can be picked for structure generation.
+ * 
+ * A one-floor CityTile only uses the "bottom" CityStructure. A two-floor tile uses the bottom and top structures. A
+ * three-floor tile uses the bottom, middle, and top structures. Any additional heights invoke additional repeats of the
+ * middle structure.
  */
 public class CityTileType {
 	/**
-	 * This is the minimum height-density value at which this CityBlock will be picked
+	 * This is the minimum number of floors that the tile manager can pick. The minimum height of the structure will be
 	 */
-	protected int minFloors = 0;
-	protected int maxFloors = 0;
+	protected int minFloors = 1;
+	protected int maxFloors = 1;
 	
-	protected RegistryEntry<CityStructure> bottomStructure;
-	protected Optional<RegistryEntry<CityStructure>> middleStructure;
-	protected Optional<RegistryEntry<CityStructure>> topStructure;
+	protected Identifier bottom;
+	protected Optional<Identifier> middle;
+	protected Optional<Identifier> top;
 	
-	public int getMinHeight() {
-		CityStructure structure = bottomStructure.value();
+	public void getHeight(int floorCount) {
 		
-		// Temporarily disabled to get it compiling
-		//return structure.ySize();
-		return 0;
+		int bottomHeight = 0;
 	}
 }
