@@ -1,0 +1,21 @@
+{
+    "epilogue_of_eras": {
+        "sounds": [
+            {
+                "name": "dead_stars:music/epilogue_of_eras",
+                "stream": true
+            }
+        ]
+    },
+
+    "city_besieged": {
+        "sounds": [
+            {
+                "name": "dead_stars:music/city_besieged",
+                "stream": true
+            }
+        ]
+    }
+
+
+}
