@@ -1,5 +1,5 @@
 {
 	"block.dead_stars.dust": "Dust",
-	"subtitles.dead_stars.music.city_beseiged": "Music: City Beseiged - Notawallplan",
-	"subtitles.dead_stars.music.epilogue_of_eras": "Music: Epilogue of Eras - Notawallplan"
+	"jukebox_song.dead_stars.city_beseiged": "Notawallplan -  City Beseiged",
+	"jukebox_song.dead_stars.epilogue_of_eras": "Notawallplan - Epilogue of Eras"
 }
