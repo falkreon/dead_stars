@@ -1,5 +1,5 @@
 {
-    "epilogue_of_eras": {
+    "music.epilogue_of_eras": {
         "sounds": [
             {
                 "name": "dead_stars:music/epilogue_of_eras",
@@ -8,7 +8,7 @@
         ]
     },
 
-    "city_besieged": {
+    "music.city_besieged": {
         "sounds": [
             {
                 "name": "dead_stars:music/city_besieged",

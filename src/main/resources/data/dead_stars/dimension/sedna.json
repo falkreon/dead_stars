@@ -1,0 +1,10 @@
+{
+	"type": "dead_stars:sedna_type",
+	"generator": {
+		"type": "dead_stars:sedna",
+		"biome_source": {
+			"type": "minecraft:fixed",
+			"biome": "dead_stars:forgotten_sands"
+		}
+	}
+}
