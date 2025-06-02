@@ -1,7 +1,10 @@
 package blue.endless.deadstars.data;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
@@ -19,6 +22,12 @@ public class DataLoader implements IdentifiableResourceReloadListener {
 	public static DataLoader instance() { return INSTANCE; }
 	
 	private DataLoader() {}
+	
+	private ImageData dunesImage = new ImageData.OpaqueGray(1,1);
+	
+	public ImageData getDunesImage() { return dunesImage; }
+	
+	
 	
 	@Override
 	public Identifier getFabricId() {
@@ -38,6 +47,20 @@ public class DataLoader implements IdentifiableResourceReloadListener {
 		DeadStarsMod.LOGGER.info("Finding structures...");
 		for(Map.Entry<Identifier, Resource> resource : resources.entrySet()) {
 			DeadStarsMod.LOGGER.info("  "+resource.getKey());
+		}
+		
+		Optional<Resource> dunesHeightMapFile = manager.getResource(DeadStarsMod.identifier("heightmap/dunes.bmp"));
+		if (dunesHeightMapFile.isPresent()) {
+			try(InputStream stream = dunesHeightMapFile.get().getInputStream()) {
+				
+				dunesImage = ImageData.loadBmp(stream);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+			//TODO: Synthetic 1x1 50%-gray fallback image
+			DeadStarsMod.LOGGER.warn("Dunes bitmap not present. Forgotten Sands will be flat.");
 		}
 		
 		return combinedFuture;
