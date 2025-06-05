@@ -59,7 +59,7 @@ public class DataWrapper {
 		long toSkip = position - this.position;
 		if (toSkip == 0) return;
 		
-		System.out.println("Skipping "+toSkip+" bytes...");
+		//System.out.println("Skipping "+toSkip+" bytes...");
 		in.skipNBytes(toSkip);
 		this.position = position;
 	}

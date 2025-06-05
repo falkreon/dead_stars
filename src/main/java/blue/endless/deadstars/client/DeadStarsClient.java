@@ -1,14 +1,49 @@
 package blue.endless.deadstars.client;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Optional;
+
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+
 import blue.endless.deadstars.DeadStarsMod;
+import blue.endless.deadstars.client.gui.FruitpadScreen;
+import blue.endless.deadstars.client.markdown.SoftNode;
+import blue.endless.deadstars.network.OpenFruitpadS2C;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.DimensionEffects;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class DeadStarsClient implements ClientModInitializer {
+	public static final LocalizedResourcePool<SoftNode> FRUITPAD_ENTRIES = new LocalizedResourcePool<>(
+			DeadStarsMod.identifier("fruitpad_entries"),
+			"dead_stars/log_entries",
+			(it)->it.getPath().endsWith(".md"),
+			true,
+			(id, res) -> {
+				try(Reader reader = new InputStreamReader(res.getInputStream(), StandardCharsets.UTF_8)) {
+					Node node = Parser.builder().build().parseReader(reader);
+					return Optional.of(SoftNode.of(node));
+				} catch (IOException e) {
+					DeadStarsMod.LOGGER.warn("There was a problem reading a markdown resource.", e);
+				}
+				
+				return Optional.empty();
+			}
+			).setDefaultEntrySupplier((id) -> new SoftNode(SoftNode.Type.TEXT, id.toString(), List.of()));
+	
+	
 	public static final DimensionEffects SEDNA_EFFECTS = new DimensionEffects(Float.NaN, false, DimensionEffects.SkyType.NORMAL, false, false) {
 		
 		@Override
@@ -66,5 +101,13 @@ public class DeadStarsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		DimensionRenderingRegistry.registerDimensionEffects(DeadStarsMod.identifier("sedna_effects"), SEDNA_EFFECTS);
+		
+		ClientPlayNetworking.registerGlobalReceiver(OpenFruitpadS2C.PAYLOAD_ID, (payload, ctx) -> {
+			MinecraftClient.getInstance().execute(() -> {
+				MinecraftClient.getInstance().setScreen(new FruitpadScreen(payload.logId(), payload.fruitpadColor()));
+			});
+		});
+		
+		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(FRUITPAD_ENTRIES);
 	}
 }

@@ -1,19 +1,17 @@
 package blue.endless.deadstars.client.gui;
 
+import blue.endless.deadstars.DeadStarsMod;
 import io.github.cottonmc.cotton.gui.client.CottonClientScreen;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 public class FruitpadScreen extends CottonClientScreen {
 
-	protected FruitpadScreen(Text title) {
-		super(new FruitpadGui());
+	public FruitpadScreen() {
+		super(new FruitpadGui(DeadStarsMod.identifier("not_found"), 0xFF_FFFFFF));
 	}
 	
-	@Override
-	public void render(DrawContext context, int mouseX, int mouseY, float partialTicks) {
-		super.render(context, mouseX, mouseY, partialTicks);
-		System.out.println("Size: "+this.width+" x "+this.height);
+	public FruitpadScreen(Identifier logId, int fruitpadColor) {
+		super(new FruitpadGui(logId, fruitpadColor));
 	}
 	
 }

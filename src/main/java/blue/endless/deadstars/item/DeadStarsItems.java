@@ -8,8 +8,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class DeadStarsItems {
@@ -21,6 +23,8 @@ public class DeadStarsItems {
 					settings
 			)
 	);
+	
+	public static final Lazy<FruitpadItem> FRUITPAD = register(FruitpadItem.PATH, FruitpadItem::new);
 	
 	private DeadStarsItems() {
 		throw new IllegalCallerException("DeadStarsItems cannot be constructed.");
@@ -38,5 +42,9 @@ public class DeadStarsItems {
 		RegistryKey<Item> key = registryKey(path);
 		
 		return REGISTRY_CONTEXT.register(key.getValue(), () -> blockSupplier.apply(new Item.Settings().registryKey(key)));
+	}
+	
+	public static <TItem extends Item> Lazy<TItem> register(String path, Supplier<TItem> supplier) {
+		return REGISTRY_CONTEXT.register(DeadStarsMod.identifier(path), supplier);
 	}
 }

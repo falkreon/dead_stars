@@ -4,28 +4,16 @@ import blue.endless.deadstars.block.DeadStarsBlocks;
 import blue.endless.deadstars.data.DataLoader;
 import blue.endless.deadstars.data.PrivateRegistry;
 import blue.endless.deadstars.item.DeadStarsItems;
+import blue.endless.deadstars.network.OpenFruitpadS2C;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.biome.source.BiomeSources;
-import net.minecraft.world.biome.source.FixedBiomeSource;
-import net.minecraft.world.dimension.DimensionOptions;
-import net.minecraft.world.dimension.DimensionType;
-
-import java.util.OptionalLong;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,5 +51,7 @@ public class DeadStarsMod implements ModInitializer {
 		
 		
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(DataLoader.instance());
+		
+		PayloadTypeRegistry.playS2C().register(OpenFruitpadS2C.PAYLOAD_ID, OpenFruitpadS2C.PACKET_CODEC);
 	}
 }

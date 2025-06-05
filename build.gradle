@@ -38,6 +38,9 @@ dependencies {
 
 	modImplementation "io.github.cottonmc:LibGui:${project.libgui_version}"
 	
+	modImplementation "org.commonmark:commonmark:0.24.0"
+	include "org.commonmark:commonmark:0.24.0"
+	
 }
 
 processResources {

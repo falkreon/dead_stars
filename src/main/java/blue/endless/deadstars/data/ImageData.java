@@ -96,6 +96,7 @@ public interface ImageData {
 		int magic = in.i16le();
 		if (magic != 0x4d42) throw new IOException("Not a BMP file.");
 		
+		@SuppressWarnings("unused")
 		int fileSize = in.i32le(); // Total file length, including headers
 		
 		// Vendor specific fields; GNU Imp zeroes these; ignore.
@@ -104,7 +105,7 @@ public interface ImageData {
 		
 		int dataOffset = in.i32le();
 		
-		System.out.println("Bitmap file with image data starting at "+dataOffset+" / "+fileSize+" bytes. Data size should be "+(fileSize-dataOffset)+" bytes.");
+		//System.out.println("Bitmap file with image data starting at "+dataOffset+" / "+fileSize+" bytes. Data size should be "+(fileSize-dataOffset)+" bytes.");
 		
 		int dibLength = in.i32le();
 		
