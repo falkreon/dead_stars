@@ -99,7 +99,14 @@ public class MarkdownWidget extends WWidget {
 			}
 			
 			contextStack.pop();
-			Vec2i baseResult = new Vec2i(blockContext.x(), pos2.y() + font.fontHeight + node.type().marginBottom());
+			BlockContext outer = contextStack.peek();
+			if (outer == null) outer = blockContext;
+			Vec2i baseResult = (pos2.x() == blockContext.x()) ?
+				new Vec2i(outer.x(), pos2.y() + node.type().marginBottom())
+				:
+				new Vec2i(outer.x(), pos2.y() + font.fontHeight + node.type().marginBottom());
+			
+			//Vec2i baseResult = new Vec2i(blockContext.x(), pos2.y() + font.fontHeight + node.type().marginBottom());
 			
 			return baseResult;
 		} else {
