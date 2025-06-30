@@ -95,7 +95,6 @@ public class MarkdownWidget extends WWidget {
 			
 			for(SoftNode child : node.children()) {
 				pos2 = paint(child, context, pos2.x(), pos2.y(), contextStack, imposedStyle);
-				
 			}
 			
 			contextStack.pop();
@@ -124,8 +123,15 @@ public class MarkdownWidget extends WWidget {
 			
 			Style style = switch(node.type()) {
 				case SoftNode.Type.EMPHASIS -> {
-					
-					yield externalStyle.withBold(true);
+					//TODO: Switch on '_' vs '*'?
+					yield externalStyle.withItalic(true);
+				}
+				case SoftNode.Type.STRONG_EMPHASIS -> {
+					if (node.value().startsWith("_")) {
+						yield externalStyle.withUnderline(true);
+					} else {
+						yield externalStyle.withBold(true);
+					}
 				}
 				default -> externalStyle;
 			};

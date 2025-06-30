@@ -1,5 +1,31 @@
 {
 	"block.dead_stars.dust": "Dust",
 	"jukebox_song.dead_stars.city_beseiged": "Notawallplan -  City Beseiged",
-	"jukebox_song.dead_stars.epilogue_of_eras": "Notawallplan - Epilogue of Eras"
+	"jukebox_song.dead_stars.epilogue_of_eras": "Notawallplan - Epilogue of Eras",
+	
+	"name.dead_stars.mare.dolens": "Mare Dolens",
+	"name.dead_stars.mare.miseria": "Mare Miseria",
+	"name.dead_stars.mare.despero": "Mare Despero",
+	"name.dead_stars.mare.cordolium": "Mare Cordolium",
+	"name.dead_stars.mare.inalgesco": "Mare Inalgesco",
+	"name.dead_stars.mare.exanimis": "Mare Exanimis",
+	"name.dead_stars.mare.de_lemures": "Mare De Lemures",
+	
+	"name.dead_stars.city.detroit": "Detroit",
+	"name.dead_stars.city.gary": "Gary",
+	"name.dead_stars.city.flint": "Flint",
+	"name.dead_stars.city.saginaw": "Saginaw",
+	"name.dead_stars.city.youngstown": "Youngstown",
+	"name.dead_stars.city.cleveland": "Cleveland",
+	"name.dead_stars.city.dayton": "Dayton",
+	"name.dead_stars.city.baltimore": "Baltimore",
+	"name.dead_stars.city.decatur": "Decatur",
+	"name.dead_stars.city.canton": "Canton",
+	"name.dead_stars.city.buffalo": "Buffalo",
+	"name.dead_stars.city.toledo": "Toledo",
+	"name.dead_stars.city.lakewood": "Lakewood",
+	"name.dead_stars.city.akron": "Akron",
+	"name.dead_stars.city.parma": "Parma",
+	"name.dead_stars.city.chicago": "Chicago",
+	"name.dead_stars.city.charleston": "Charleston"
 }

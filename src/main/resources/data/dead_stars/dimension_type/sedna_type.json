@@ -1,7 +1,7 @@
 {
 	"ambient_light": 0.1,
 	"bed_works": true,
-	"coordinate_scale": 64.0,
+	"coordinate_scale": 16930.0,
 	"effects": "dead_stars:sedna_effects",
 	"has_ceiling": false,
 	"has_raids": false,
@@ -9,7 +9,7 @@
 	"height": 384,
 	"infiniburn": "#minecraft:infiniburn_overworld",
 	"logical_height": 384,
-	"min_y": -64,
+	"min_y": 0,
 	"monster_spawn_block_light_limit": 0,
 	"monster_spawn_light_level": 0,
 	"natural": true,

@@ -59,6 +59,7 @@ public class SednaChunkGenerator extends ChunkGenerator {
 	@Override
 	public void buildSurface(ChunkRegion region, StructureAccessor structures, NoiseConfig noiseConfig, Chunk chunk) {
 		// We don't use this step.
+		
 	}
 
 	@Override

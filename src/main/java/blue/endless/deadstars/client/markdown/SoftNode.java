@@ -83,6 +83,8 @@ public record SoftNode(SoftNode.Type type, String text, String value, List<SoftN
 			case LinkReferenceDefinition ref -> new SoftNode(Type.LINK_REFERENCE_DEFINITION, "", ref.getLabel() + ":" + ref.getDestination() + ":" + ref.getTitle(), normalizeChildren(node));
 			case OrderedList ordered -> new SoftNode(Type.ORDERED_LIST, "", computeIfAbsent(ordered.getMarkerStartNumber(), 1).toString(), normalizeChildren(node));
 			case SoftLineBreak soft -> new SoftNode(Type.SOFT_LINE_BREAK, " ", normalizeChildren(node));
+			case Emphasis emphasis -> new SoftNode(Type.EMPHASIS, "", emphasis.getOpeningDelimiter(), normalizeChildren(node));
+			case StrongEmphasis strong -> new SoftNode(Type.STRONG_EMPHASIS, "", strong.getOpeningDelimiter(), normalizeChildren(node));
 			
 			default -> new SoftNode(Type.forClass(node.getClass()), normalizeChildren(node));
 		};
